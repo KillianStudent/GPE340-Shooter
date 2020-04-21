@@ -14,7 +14,22 @@ public class PlayerController : Controller
     public override void Update()
     {
         HandleMovement();
+        HandleShooting();
     }
+
+    private void HandleShooting()
+    {
+        if (Input.GetButtonDown("Fire"))
+        {
+            pawn.OnTriggerPull.Invoke();
+        }
+
+        if (Input.GetButtonUp("Fire"))
+        {
+            pawn.OnTriggerRelease.Invoke();
+        }
+    }
+
     private void HandleMovement()
     {
         // Handle Movement
