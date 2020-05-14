@@ -321,7 +321,7 @@ MonoBehaviour:
   prefabBullet: {fileID: 8816882651928882033, guid: 64f311e54747fc94ca44b656c099f2c9,
     type: 3}
   FirePoint: {fileID: 4541724175029137480}
-  fireRate: 20
+  fireRate: 0.6
 --- !u!1 &4541724174109892638
 GameObject:
   m_ObjectHideFlags: 0

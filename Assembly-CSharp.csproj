@@ -11,7 +11,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{C3F3E8A9-AF42-7B02-D242-A97115E8EA6D}</ProjectGuid>
+    <ProjectGuid>{CF898B40-FB7F-5B02-B83A-54AB132A968C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -55,9 +55,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\AIController.cs" />
+     <Compile Include="Assets\Scripts\AIPawn.cs" />
      <Compile Include="Assets\Scripts\BulletData.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
      <Compile Include="Assets\Scripts\Controller.cs" />
+     <Compile Include="Assets\Scripts\Drops.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\Health.cs" />
      <Compile Include="Assets\Scripts\Pawn.cs" />
@@ -65,9 +68,11 @@
      <Compile Include="Assets\Scripts\PickupHealth.cs" />
      <Compile Include="Assets\Scripts\PIckupWeapon.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
+     <Compile Include="Assets\Scripts\RagdollController.cs" />
      <Compile Include="Assets\Scripts\RespawnObject.cs" />
      <Compile Include="Assets\Scripts\RifleWeapon Full Auto.cs" />
      <Compile Include="Assets\Scripts\RifleWeapon.cs" />
+     <Compile Include="Assets\Scripts\SpawnBox.cs" />
      <Compile Include="Assets\Scripts\startRespawnTimer.cs" />
      <Compile Include="Assets\Scripts\TurnToMouse.cs" />
      <Compile Include="Assets\Scripts\UIHealthText.cs" />
@@ -75,31 +80,31 @@
      <Compile Include="Assets\Scripts\WeaponAgent.cs" />
      <Compile Include="Assets\Scripts\WeaponPistol.cs" />
  <Reference Include="Unity.Timeline.Editor">
- <HintPath>C:/Users/User/Desktop/Github repositories/GPE340 top down shooter round 2/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+ <HintPath>C:/Users/User/Desktop/Github repositories/GPE340 Shooter/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.VSCode.Editor">
- <HintPath>C:/Users/User/Desktop/Github repositories/GPE340 top down shooter round 2/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+ <HintPath>C:/Users/User/Desktop/Github repositories/GPE340 Shooter/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro.Editor">
- <HintPath>C:/Users/User/Desktop/Github repositories/GPE340 top down shooter round 2/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+ <HintPath>C:/Users/User/Desktop/Github repositories/GPE340 Shooter/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
- <HintPath>C:/Users/User/Desktop/Github repositories/GPE340 top down shooter round 2/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+ <HintPath>C:/Users/User/Desktop/Github repositories/GPE340 Shooter/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Timeline">
- <HintPath>C:/Users/User/Desktop/Github repositories/GPE340 top down shooter round 2/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+ <HintPath>C:/Users/User/Desktop/Github repositories/GPE340 Shooter/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
  </Reference>
  <Reference Include="Unity.CollabProxy.Editor">
- <HintPath>C:/Users/User/Desktop/Github repositories/GPE340 top down shooter round 2/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+ <HintPath>C:/Users/User/Desktop/Github repositories/GPE340 Shooter/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Rider.Editor">
- <HintPath>C:/Users/User/Desktop/Github repositories/GPE340 top down shooter round 2/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+ <HintPath>C:/Users/User/Desktop/Github repositories/GPE340 Shooter/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro">
- <HintPath>C:/Users/User/Desktop/Github repositories/GPE340 top down shooter round 2/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ <HintPath>C:/Users/User/Desktop/Github repositories/GPE340 Shooter/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.UI">
- <HintPath>C:/Users/User/Desktop/Github repositories/GPE340 top down shooter round 2/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+ <HintPath>C:/Users/User/Desktop/Github repositories/GPE340 Shooter/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.2f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>

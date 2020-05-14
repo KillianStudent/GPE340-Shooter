@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TurnToMouse : MonoBehaviour
 {
-    [SerializeField] private Camera camera;
+    public Camera camera;
     [SerializeField] private Pawn pawn;
 
 
