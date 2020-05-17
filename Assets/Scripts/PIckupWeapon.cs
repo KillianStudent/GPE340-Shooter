@@ -14,7 +14,10 @@ public class PIckupWeapon : Pickup
     public override void OnTriggerEnter(Collider collider)
     {
         Pawn pawn = collider.GetComponent<Pawn>();
-        OnPickUp(pawn);
+        if (collider.gameObject.tag == "Player")
+        {
+            OnPickUp(pawn);
+        }
     }
 
     public override void OnPickUp(Pawn pawn)    // destroys itself 

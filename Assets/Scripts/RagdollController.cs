@@ -11,7 +11,7 @@ public class RagdollController : MonoBehaviour
     private Animator anim;
 
     // Start is called before the first frame update
-    void Start()
+    void Start() // starts by getting the ragdoll parts and disabling the ragdoll
     {
         mainRigidbody = GetComponent<Rigidbody>();
         mainCollider = GetComponent<Collider>();

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AIPawn : Pawn
 {
-    public Weapon[] defaultWeapons;
+    public Weapon[] defaultWeapons; // array of weapons for the AI to spawn with
     public AIController aiController;
     public float aiRange = 1f; // the field of view in which the AI will be able to shoot the player
 
@@ -34,12 +34,5 @@ public class AIPawn : Pawn
         {
             weapon.OnTriggerPull();
         }
-    }
-
-    public bool isInRange()
-    {
-
-
-        return false;
     }
 }

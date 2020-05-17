@@ -16,7 +16,10 @@ public class PickupHealth : Pickup
         Pawn pawn = collider.GetComponent<Pawn>();
         if (pawn)
         {
-            OnPickUp(pawn);
+            if (pawn.GetComponent<Health>().HP >= 0)
+            {
+                OnPickUp(pawn);
+            }
         }
     }
 

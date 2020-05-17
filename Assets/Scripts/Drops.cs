@@ -14,28 +14,13 @@ public class Drops : MonoBehaviour
         public Pickup pickup;
         public int weight;
     }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void DropItem()
     {
-        //RandomPickupFromList();
         Pickup dorppedObject = Instantiate(RandomPickupFromList(), gameObject.transform.position, gameObject.transform.rotation) as Pickup;
-        Debug.Log(RandomPickupFromList());
     }
 
     public Pickup RandomPickupFromList()
     {
-        // create an array equal in size to to the weighted drops
         CDFArray.Clear();
 
         int density = 0;
@@ -49,12 +34,14 @@ public class Drops : MonoBehaviour
         // choose a random number between 0 and the maximum density
         int randomNumber = Random.Range(0, density);
 
-        int selectedIndex = System.Array.BinarySearch(CDFArray.ToArray(), randomNumber);
-        if (selectedIndex < 0)
+        for (int i = 0; i < CDFArray.Count; i++)
         {
-            selectedIndex = -selectedIndex;
+            if (randomNumber <= CDFArray[i])
+            {
+                return itemToDrop[i].pickup;
+            }
         }
-        return itemToDrop[selectedIndex].pickup;
+        return null;
     }
 
 }

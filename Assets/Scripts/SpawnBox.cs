@@ -14,14 +14,14 @@ public class SpawnBox : MonoBehaviour
     public AIController aiController;
     private bool spawningEnemies = true;
 
-    private void Start()
+    private void Start()    // starts spawning the enemies in 0 seconds with a delay of spawnDelay
     {
         InvokeRepeating("SpawnEnemy", 0f, spawnDelay);
     }
 
     private void SpawnEnemy()
     {
-        if (currentActiveEnemies >= maxActiveEnemies)
+        if (currentActiveEnemies >= maxActiveEnemies)   // if the function tries to spawn an enemy while there are too many enemies, return.
             return;
 
         currentActiveEnemies++;
@@ -30,29 +30,26 @@ public class SpawnBox : MonoBehaviour
         enemy.GetComponent<AIPawn>().aiController = aiController;
 
 
-        if (currentActiveEnemies >= maxActiveEnemies)
+        if (currentActiveEnemies >= maxActiveEnemies)   // when the max number of enemies is hit, the enemies stop spawning
         {
             CancelInvoke("SpawnEnemy");
             spawningEnemies = false;
         }
     }
 
-    private void HandleEnemyDeath()
+    private void HandleEnemyDeath() // function that is called to handle when the enemy dies, subtracting from the active number of enemies
     {
         currentActiveEnemies--;
-        if (spawningEnemies == false)
+        if (spawningEnemies == false)   // checks if the enemies are not spawning anymore, and sets it to spawn again if it is not
         {
             InvokeRepeating("SpawnEnemy", 0f, spawnDelay);
             spawningEnemies = true;
         }
     }
 
-    private void OnDrawGizmos()
+    private void OnDrawGizmos() // gizmos to draw a red sphere on the spawner's area
     {
-        Gizmos.matrix = Matrix4x4.TRS(transform.position, transform.rotation, Vector3.one);
-        Gizmos.color = Color.Lerp(Color.cyan, Color.clear, 0.5f);
-        Gizmos.DrawCube(Vector3.up * scale.y / 2f, scale);
-        Gizmos.color = Color.cyan;
-        Gizmos.DrawRay(Vector3.zero, Vector3.forward * 0.4f);
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(this.gameObject.transform.position, 1);
     }
 }
