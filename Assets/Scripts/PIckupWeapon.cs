@@ -6,6 +6,8 @@ public class PIckupWeapon : Pickup
 {
     public Weapon weaponToSpawn;
 
+    public Sprite weaponToDisplay;
+
     public override void Update()
     {
         Spin();
@@ -25,7 +27,8 @@ public class PIckupWeapon : Pickup
         Pawn targetPawn = pawn.GetComponent<Pawn>();
         if (pawn != null)
         {
-            pawn.EquipWeapon(weaponToSpawn);        
+            pawn.weaponToDisplay = weaponToDisplay;
+            pawn.EquipWeapon(weaponToSpawn);
             Destroy(gameObject);
         }
     }

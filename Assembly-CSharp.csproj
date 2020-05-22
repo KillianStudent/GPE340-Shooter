@@ -59,10 +59,12 @@
      <Compile Include="Assets\Scripts\AIPawn.cs" />
      <Compile Include="Assets\Scripts\BulletData.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
+     <Compile Include="Assets\Scripts\CanvasController.cs" />
      <Compile Include="Assets\Scripts\Controller.cs" />
      <Compile Include="Assets\Scripts\Drops.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\Health.cs" />
+     <Compile Include="Assets\Scripts\OptionsMenu.cs" />
      <Compile Include="Assets\Scripts\Pawn.cs" />
      <Compile Include="Assets\Scripts\Pickup.cs" />
      <Compile Include="Assets\Scripts\PickupHealth.cs" />
@@ -76,6 +78,8 @@
      <Compile Include="Assets\Scripts\startRespawnTimer.cs" />
      <Compile Include="Assets\Scripts\TurnToMouse.cs" />
      <Compile Include="Assets\Scripts\UIHealthText.cs" />
+     <Compile Include="Assets\Scripts\UILivesDisplay.cs" />
+     <Compile Include="Assets\Scripts\UITextDisplay.cs" />
      <Compile Include="Assets\Scripts\Weapon.cs" />
      <Compile Include="Assets\Scripts\WeaponAgent.cs" />
      <Compile Include="Assets\Scripts\WeaponPistol.cs" />

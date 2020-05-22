@@ -12,12 +12,16 @@ public class Pawn : MonoBehaviour
     public Weapon weapon;
     public UnityEvent OnTriggerPull;
     public UnityEvent OnTriggerRelease;
+    public UnityEvent OnEquip; // unity events to display the weapon on UI
+    public UnityEvent OnUnequip;
     public Transform aimPoint;
+
+    public Sprite weaponToDisplay;
 
     public Animator anim;
     public NavMeshAgent agent;
 
-    [SerializeField]private WeaponAnimationType animationType = WeaponAnimationType.None;
+    private WeaponAnimationType animationType = WeaponAnimationType.None;
 
     public enum WeaponAnimationType
     {
@@ -47,7 +51,6 @@ public class Pawn : MonoBehaviour
         }
         if (weapon.RighthandPoint != null)
         {
-            Debug.Log("IK-right-animating");
             anim.SetIKPosition(AvatarIKGoal.RightHand, weapon.RighthandPoint.position);
             anim.SetIKPositionWeight(AvatarIKGoal.RightHand, 1.0f);
             anim.SetIKRotation(AvatarIKGoal.RightHand, weapon.RighthandPoint.rotation);
@@ -61,7 +64,6 @@ public class Pawn : MonoBehaviour
 
         if (weapon.LefthandPoint != null)
         {
-            Debug.Log("IK-left-animating");
             anim.SetIKPosition(AvatarIKGoal.LeftHand, weapon.LefthandPoint.position);
             anim.SetIKPositionWeight(AvatarIKGoal.LeftHand, 1.0f);
             anim.SetIKRotation(AvatarIKGoal.LeftHand, weapon.LefthandPoint.rotation);
@@ -92,6 +94,7 @@ public class Pawn : MonoBehaviour
 
         OnTriggerPull.AddListener(weapon.OnTriggerPull);
         OnTriggerRelease.AddListener(weapon.OnTriggerRelease);
+        OnEquip.Invoke();
     }
 
     // checks if the C key is entered, if it is then the animator uses crouching animations, when released it reverts back to standing
@@ -114,9 +117,13 @@ public class Pawn : MonoBehaviour
 
     public void Unequip()   // unequips a weapon if it's equipped
     {
-        Destroy(weapon.gameObject);
-        OnTriggerPull.RemoveListener(weapon.OnTriggerPull);
-        OnTriggerRelease.RemoveListener(weapon.OnTriggerRelease);
+        if (weapon != null)
+        {
+            OnUnequip.Invoke();
+            Destroy(weapon.gameObject);
+            OnTriggerPull.RemoveListener(weapon.OnTriggerPull);
+            OnTriggerRelease.RemoveListener(weapon.OnTriggerRelease);
+        }
     }
 
     public void Move(Vector3 directionToMove)

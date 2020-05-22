@@ -40,18 +40,7 @@ public class Health : MonoBehaviour
         if (HP <= 0)
         {
             onDie.Invoke();
-            if (this.gameObject.tag == "Player")
-            {
-                Destroy(this.gameObject, 3);
-            }
-            else
-            {
-                Destroy(this.gameObject, 7);
-            }
-        }
-        else
-        {
-
+            Destroy(this.gameObject, 3);       
         }
     }
 }
