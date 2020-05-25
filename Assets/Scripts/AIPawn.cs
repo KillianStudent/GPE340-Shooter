@@ -30,6 +30,8 @@ public class AIPawn : Pawn
 
     public void Update()
     {
+        if (aiController.target == null)
+            return;
         if (Vector3.Distance(this.transform.position, aiController.target.transform.position) < aiRange)
         {
             weapon.OnTriggerPull();

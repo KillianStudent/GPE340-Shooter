@@ -9,7 +9,7 @@ public class Health : MonoBehaviour
     [SerializeField, Tooltip("Raised every time the object is healed")]
     private UnityEvent onHeal;
     [SerializeField, Tooltip("Raised every time the object is damaged.")]
-    private UnityEvent onDamage;
+    public UnityEvent onDamage;
     [SerializeField, Tooltip("Raised once when the object's health reaches 0.")]
     public UnityEvent onDie;
 

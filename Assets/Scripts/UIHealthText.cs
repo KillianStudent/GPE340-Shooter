@@ -10,6 +10,8 @@ public class UIHealthText : UITextDisplay
     // Update is called once per frame
     void Update()
     {
+        if (pawnHealth == null)
+            return;
         text.text = string.Format("Health: " +  Mathf.RoundToInt(pawnHealth.percentHP * 100f) + "%");
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-[RequireComponent(typeof(Text))]
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -72,12 +72,12 @@ public class GameManager : MonoBehaviour
 
     public void UnPause()
     {
-        Time.timeScale = 1.0f;
+        Time.timeScale = 1.0f; // unpauses the game
         isPaused = false;
         canvas.GetComponent<CanvasController>().ChangeButtonState(false);
     }
 
-    private void HandlePlayerDeath()
+    private void HandlePlayerDeath() // death handler
     {
         aiController.nullifyTarget();
         Debug.Log("you died!");
@@ -88,9 +88,14 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Game Over!");
-            //TODO: Game over
+            SceneManager.UnloadSceneAsync("MainScene");
+            Invoke("LoadGameOver", 3); // Load Game Over Scene after a delay
         }
+    }
+
+    private void LoadGameOver()
+    {
+        SceneManager.LoadScene("GameOverScene");
     }
 
     void SpawnPlayer()
@@ -103,5 +108,6 @@ public class GameManager : MonoBehaviour
         canvas.GetComponent<CanvasController>().AssignUIElements(Lives, player.GetComponent<Pawn>());
         gameCamera.GetComponent<CameraController>().target = player.transform;  // sets the camera's target to the player
         aiController.target = player.transform; // sets the AIcontroller to target the player
+        canvas.GetComponent<CanvasController>().WeaponSprite.SetActive(false); // hides the weapon display after respawning
     }
 }

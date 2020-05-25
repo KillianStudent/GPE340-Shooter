@@ -40,6 +40,7 @@ public class RifleWeapon : Weapon
     {
         GameObject bullet = Instantiate(prefabBullet, FirePoint.position, FirePoint.rotation) as GameObject;
         BulletData bulletData = bullet.GetComponent<BulletData>();
+        GetComponent<AudioSource>().Play();
         if (bulletData != null)
         {
             bulletData.damageDone = damageDone;

@@ -21,36 +21,36 @@ public class CanvasController : MonoBehaviour
     public GameObject SettingsButton;
     public GameObject QuitButton;
 
+    public GameObject FPSDisplay;
+
     private bool isFullScreen = false;
     private bool settingsActive = false;
 
-    // Settings buttons
-    [SerializeField] private GameObject LowSettingsButton;
-    [SerializeField] private GameObject MidSettingsButton;
-    [SerializeField] private GameObject HighSettingsButton;
-    [SerializeField] private GameObject Resolution640x480Button;
-    [SerializeField] private GameObject Resolution1280x720Button;
-    [SerializeField] private GameObject Resolution1920x1080Button;
-    [SerializeField] private GameObject FullScreenToggle;
-    [SerializeField] private GameObject SoundEffectSlider;
-    [SerializeField] private GameObject MusicSlider;
-    [SerializeField] private GameObject WeaponSprite;
+    public GameObject WeaponSprite;
 
 
 
     // Start is called before the first frame update
     void Start()
     {
+        WeaponSprite.SetActive(false);
         ResumeButton.GetComponent<Button>().onClick.AddListener(gameManager.UnPause); // adds the unPause function to the button
         SettingsButton.GetComponent<Button>().onClick.AddListener(settingsButtonClick);
         QuitButton.GetComponent<Button>().onClick.AddListener(exitGame); // adds the exitGame function to the button, which is in this script
 
-        LowSettingsButton.GetComponent<Button>().onClick.AddListener(changeQualityLow); // quality settings assignings
-        MidSettingsButton.GetComponent<Button>().onClick.AddListener(changeQualityMid);
-        HighSettingsButton.GetComponent<Button>().onClick.AddListener(changeQualityHigh);
+        ChangeButtonState(false);
+
+        optionsMenu = this.gameObject.GetComponent<OptionsMenu>();
 
         ChangeSettingsVisibility(false); // setting the quality setting buttons off by default
         ChangeButtonState(false);
+    }
+
+    public void Update()
+    {
+        if (gameManager.isPaused)
+            return;
+        FPSDisplay.GetComponent<Text>().text = string.Format("FPS: " + Mathf.RoundToInt(1.0f / Time.deltaTime));
     }
 
     public void changeQualityLow()
@@ -86,8 +86,9 @@ public class CanvasController : MonoBehaviour
     public void changeFullscreenbool()
     {
         isFullScreen = !isFullScreen;
+        Screen.fullScreen = !Screen.fullScreen;
     }
-    
+
     public void ChangeButtonState(bool active)
     {
         ResumeButton.SetActive(active);
@@ -106,16 +107,7 @@ public class CanvasController : MonoBehaviour
     private void ChangeSettingsVisibility(bool active)
     {
         settingsActive = active;
-        LowSettingsButton.SetActive(active);
-        MidSettingsButton.SetActive(active);
-        HighSettingsButton.SetActive(active);
-        Resolution640x480Button.SetActive(active);
-        Resolution1280x720Button.SetActive(active);
-        Resolution1920x1080Button.SetActive(active);
-        FullScreenToggle.SetActive(active);
-        SoundEffectSlider.SetActive(active);
-        MusicSlider.SetActive(active);
-        WeaponSprite.SetActive(active);
+        optionsMenu.changeVisibility(active);
     }
 
     void unpauseGame()
@@ -137,12 +129,14 @@ public class CanvasController : MonoBehaviour
 
     public void WeaponUIDisplay()
     {
+        WeaponSprite.SetActive(true);
         WeaponSprite.GetComponent<Image>().sprite = pawn.weaponToDisplay;
     }
 
     public void WeaponUIRemoveDisplay()
     {
         WeaponSprite.GetComponent<Image>().sprite = null;
+        WeaponSprite.SetActive(false);
     }
 
 }

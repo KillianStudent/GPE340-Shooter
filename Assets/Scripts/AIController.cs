@@ -18,6 +18,8 @@ public class AIController : Controller
     {
         foreach (Pawn _pawn in pawns)
         {
+            if (target == null)
+                return;
             _pawn.agent.SetDestination(target.position);
             Vector3 desiredMovement = _pawn.agent.desiredVelocity;
             _pawn.Move(desiredMovement);
